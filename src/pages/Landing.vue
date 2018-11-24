@@ -4,7 +4,7 @@
     <div class="landing_main">
       <div class="landing_inner">
         <div class="inner_img"><img src="../assets/avatar.png" alt="" /></div>
-        <h1 class="tracking-in-expand"  @click="handleRoute()"><div class="arrow arrow_left"></div>Dendoink<div class="arrow arrow_right"></div></h1>
+        <h1 class="tracking-in-expand"  @click="handleRoute()"><div class="arrow arrow_left"></div>jszhai<div class="arrow arrow_right"></div></h1>
         <div class="info_tags tracking-in-contract-bck" @click="handleRoute()">
           <p class="info_tag">Dreamer</p>
           &

@@ -3,10 +3,10 @@
     <div :class="menuFixed ? 'header header-fixed' : 'header'">
       <div class="menu_bar">
         <div class="menu_bar_list">
-          <span v-on:click="handleRouter('home')" class="menu_tags ">ALL POSTS</span>
-          <span v-on:click="handleRouter('tags')" class="menu_tags ">TAGS</span>
-          <span v-on:click="handleRouter('resume')" class="menu_tags ">ABOUT</span>
-          <span v-on:click="handleRouter('landing')" class="menu_tags ">LANDING</span>
+          <span v-on:click="handleRouter('home')" class="menu_tags ">主页</span>
+          <span v-on:click="handleRouter('tags')" class="menu_tags ">标签</span>
+          <span v-on:click="handleRouter('resume')" class="menu_tags ">关于</span>
+          <span v-on:click="handleRouter('landing')" class="menu_tags ">七点</span>
         </div>
       </div>
     </div>
@@ -14,7 +14,7 @@
     <router-view class="router-view"/>
     <!-- </div> -->
     <div class="copy-right">
-      © Dendoink. All rights reserved.
+      © jszhai. All rights reserved.
     </div>
   </div>
 </template>
@@ -67,8 +67,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background: url(http://ww1.sinaimg.cn/large/88b26e1cgy1ftdstdeacbj212f0d73zv.jpg)
-    top no-repeat;
+  /* background: url(http://ww1.sinaimg.cn/large/88b26e1cgy1ftdstdeacbj212f0d73zv.jpg)
+    top no-repeat; */
+  background: url('./assets/avatar.png') top no-repeat;
   background-size: contain;
   height: 100vh;
 }
