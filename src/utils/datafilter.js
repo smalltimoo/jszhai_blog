@@ -25,9 +25,9 @@ export const getAllPostsByCategories = (allPosts, categorie) => {
 export const getAllTags = (allPosts) => {
   var tags = []
   for (let post of allPosts) {
-    if(post.tags.length === 0){
+    if (post.tags.length === 0) {
       tags.push('No-Tag-Posts')
-    }else{
+    } else {
       tags.push(...post.tags)
     }
   }
@@ -41,9 +41,9 @@ export const getAllTags = (allPosts) => {
 export const getAllCategories = (allPosts) => {
   var categories = []
   for (let post of allPosts) {
-    if(post.categories){
+    if (post.categories) {
       categories.push(post.categories)
-    }else{
+    } else {
       categories.push('Others')
     }
   }
@@ -57,11 +57,11 @@ export const getAllCategories = (allPosts) => {
  * @param {number} size 分割后的子数组长度
  */
 export const sliceArray = (array, size = 7) => {
-  var result = [];
+  var result = []
   for (var x = 0; x < Math.ceil(array.length / size); x++) {
-      var start = x * size;
-      var end = start + size;
-      result.push(array.slice(start, end));
+    var start = x * size
+    var end = start + size
+    result.push(array.slice(start, end))
   }
-  return result;
-}   
+  return result
+}

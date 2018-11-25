@@ -24,7 +24,7 @@ import { postData } from './utils/data.js'
 import { getAllCategories } from './utils/datafilter.js'
 export default {
   name: 'App',
-  data () {
+  data() {
     return {
       menuFixed: false
     }
@@ -54,7 +54,7 @@ export default {
       return Array.from(new Set(getAllCategories(JSON.parse(postData))))
     }
   },
-  mounted () {
+  mounted() {
     window.addEventListener('scroll', this.menu)
   }
 }
@@ -62,21 +62,21 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  /* background: url(http://ww1.sinaimg.cn/large/88b26e1cgy1ftdstdeacbj212f0d73zv.jpg)
-    top no-repeat; */
-  background: url('./assets/avatar.png') top no-repeat;
+  background: url(http://ww1.sinaimg.cn/large/88b26e1cgy1ftdstdeacbj212f0d73zv.jpg)
+    top no-repeat;
+  /* background: url("./assets/mainbg.png") top no-repeat; */
   background-size: contain;
   height: 100vh;
 }
 .avatar {
   height: 3rem;
   width: 3rem;
-  background-image: url('./assets/avatar.png');
+  background-image: url("./assets/avatar.png");
   background-size: cover;
   display: block;
   border-radius: 50%;

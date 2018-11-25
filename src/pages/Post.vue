@@ -31,11 +31,12 @@
 </template>
 
 <script>
-import 'highlight.js/styles/atom-one-dark.css'
-import { postData } from '../utils/data.js'
-import moment from 'moment'
+import "highlight.js/styles/atom-one-dark.css"
+// todo notuse
+// import { postData } from "../utils/data.js"
+import moment from "moment"
 export default {
-  name: 'Post',
+  name: "Post",
   data() {
     return {
       // gitalk: new Gitalk({
@@ -52,7 +53,7 @@ export default {
       currentPost: {},
       previous: {},
       next: {},
-      allPosts: JSON.parse(window.localStorage.getItem('currentPosts') || '[]')
+      allPosts: JSON.parse(window.localStorage.getItem("currentPosts") || "[]")
     }
   },
   computed: {
@@ -92,7 +93,7 @@ export default {
     }
   },
   methods: {
-    handlePostLink: function(index, dir = 'post') {
+    handlePostLink: function (index, dir = "post") {
       let postName = this.allPosts[index].name
       this.$router.push({
         path: `/${dir}/${postName}`,
@@ -103,8 +104,8 @@ export default {
     }
   },
   filters: {
-    moment: function(date) {
-      return moment(date).format('MMMM Do YYYY')
+    moment: function (date) {
+      return moment(date).format("MMMM Do YYYY")
     }
   },
   watch: {
@@ -247,7 +248,7 @@ export default {
   border-left-color: #00000078;
   border-radius: 0px;
 }
-.gitalk-container .gt-container{
+.gitalk-container .gt-container {
   margin-left: auto;
   max-width: 80%;
   margin-right: auto;
