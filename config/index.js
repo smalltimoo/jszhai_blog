@@ -12,12 +12,12 @@ module.exports = {
     theme: 'github-light'
   },
   userInfo: {
-    name: 'name',
-    phone: '1XX-XXXX-XXXX',
-    site: 'www.yoursite.com',
-    email: 'youemail@xmail.com',
-    birth: 'December 10,1991',
-    repo: 'DendiSe7enGitHub/blog-comments-repo',
+    name: 'smalltimoo',
+    phone: '152-7904-6915',
+    site: 'smalltimoo.github.io',
+    email: 'smalltimoo@163.com',
+    birth: 'July 04,1991',
+    repo: 'smalltimoo/smalltimoo.github.io',
     theme: 'github-light',
     skills: [
       { label: 'HTML', percentage: '80%' },
@@ -30,13 +30,13 @@ module.exports = {
       { label: 'Git', percentage: '70%' },
       { label: 'Webpack', percentage: '50%' }
     ],
-    location: 'Shanghai,CN',
+    location: 'ShenZhen,CN',
     jobTitle: 'Frontend Developer',
     description: 'Things we do are all for love'
   },
   ladingInfo: {
     // landing 显示的名称
-    blogName: 'Google',
+    blogName: 'Smalltimoo',
     tagA: 'Dreamer',
     tagB: 'Coder',
     tagC: 'Writter',

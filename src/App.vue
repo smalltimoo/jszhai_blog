@@ -34,14 +34,14 @@
     <a
       href="www.dendionk.com"
       class="copy-right"
-    >©Power by Dendoink. All rights reserved.</a>
+    >©Power by Smalltimoo. All rights reserved.</a>
     <div :class="showCommonFooter ? 'common-footer slide-top':'common-footer hidden'">
       <div class="footer-content">
-        <!-- <a href="www.dendoink.com">Dendoink</a>
+        <!-- <a href="www.dendoink.com">Smalltimoo</a>
          -->
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="180"
+          width="210"
           height="50"
         >
           <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
@@ -102,7 +102,7 @@
               x="9"
               stroke-opacity="null"
               fill="#ffffff"
-            >BlogName</text>
+            >Smalltimoo</text>
           </g>
         </svg>
         <div class="group-content">
@@ -110,14 +110,9 @@
             class="child"
             href="www.dendionk.com"
           >Link 1</a>
-          <a
-            class="child"
-            href="www.dendionk.com"
-          >Link 2</a>
-          <a
-            class="child"
-            href="www.dendionk.com"
-          >Link 3</a>
+
+          <span id="busuanzi_container_site_pv" class="child" style='display:none'>| 总访问量 <span id="busuanzi_value_site_pv"></span> 次 </span>
+          <span id="busuanzi_container_site_uv" class="child" style='display:none'>| 总访客数 <span id="busuanzi_value_site_uv"></span> 人 </span>
         </div>
       </div>
     </div>
@@ -127,6 +122,8 @@
 <script scoped>
 import { postData } from "./utils/data.js";
 import { getAllCategories } from "./utils/datafilter.js";
+
+require('./utils/love');
 export default {
   name: "App",
   data() {

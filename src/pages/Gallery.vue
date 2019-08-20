@@ -2,7 +2,7 @@
   <div class="gallery-container">
     <div class="gallery-header">
       <div class="logo">
-        <span class="name">Dendoink</span>
+        <span class="name">Smalltimoo</span>
         <span class="text">Photography</span>
       </div>
     </div>
@@ -53,52 +53,57 @@
 <script>
 import moment from "moment";
 import { photoData } from "../utils/photoData";
+import { value, onMounted } from 'vue-function-api';
+/** 主页 */
 export default {
-  // 主页
-  name: "Gallery",
-  props: {},
-  data() {
-    return {
-      firstColumnPhotos: [],
-      secondColumnPhotos: [],
-      thirdColumnPhotos: []
-    };
+  props: {
+    name: 'Gallery'
   },
-  computed: {},
-  methods: {
-    handlePostLink: function(index, dir = "post") {
+  setup(props, context) {
+    const firstColumnPhotos = value([]);
+    const secondColumnPhotos = value([]);
+    const thirdColumnPhotos = value([]);
+    // eslint-disable-next-line
+    const handlePostLink = ((index, dir = "post") => {
       window.localStorage.setItem(
         "currentPosts",
-        JSON.stringify(this.currentPosts)
+        JSON.stringify(context.parent.currentPosts)
       );
-      let postName = this.currentPosts[index].name;
-      this.$router.push(`/${dir}/${postName}`);
-    }
+      let postName = context.parent.currentPosts[index].name;
+      context.parent.$router.push(`/${dir}/${postName}`);
+    });
+    onMounted(() => {
+      if (photoData) {
+        for (let x = 0; x < photoData.length; x += 3) {
+          if (photoData[x]) {
+            firstColumnPhotos.value.push(photoData[x]);
+          }
+          if (photoData[x + 1]) {
+            secondColumnPhotos.value.push(photoData[x + 1]);
+          }
+          if (photoData[x + 2]) {
+            thirdColumnPhotos.value.push(photoData[x + 2]);
+          }
+        }
+      }
+    });
+    return {
+      firstColumnPhotos,
+      secondColumnPhotos,
+      thirdColumnPhotos,
+      handlePostLink
+    };
   },
   filters: {
-    moment: function(date) {
+    moment (date) {
       return moment(date).format("MMMM Do YYYY");
     },
-    daysAgo: function(date) {
+    daysAgo (date) {
       let days = new Date() - new Date(date);
       return parseInt(days / (1000 * 60 * 60 * 24));
     }
-  },
-  created() {
-    if (photoData) {
-      for (let x = 0; x < photoData.length; x += 3) {
-        if (photoData[x]) {
-          this.firstColumnPhotos.push(photoData[x]);
-        }
-        if (photoData[x + 1]) {
-          this.secondColumnPhotos.push(photoData[x + 1]);
-        }
-        if (photoData[x + 2]) {
-          this.thirdColumnPhotos.push(photoData[x + 2]);
-        }
-      }
-    }
   }
+
 };
 </script>
 

@@ -29,7 +29,7 @@ async function autoUpdate() {
     shell.exit(1);
   }
   // 推送当前目录代码
-  await shell.exec('git add .')
+  await shell.exec('git add -A .')
   await shell.exec(`git commit -m '${config.commitMessage}'`).code
   await shell.exec('git push origin master -f');
   console.log(chalk.green(

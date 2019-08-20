@@ -53,17 +53,20 @@
 </template>
 
 <script>
+/* eslint-disable */
 const config = require("../../config/");
+import  { value, computed, onMounted }  from 'vue-function-api';
 export default {
-  name: "Landing",
-  computed: {
-    landing: function() {
-      return config.ladingInfo;
-    }
+  props: {
+   name: "Landing"
   },
-  methods: {
-    handleRoute: function() {
-      this.$router.push("home");
+  setup( props, context ){
+    console.info(props,context);
+    const landing = computed(() => config.ladingInfo);
+    const handleRoute = () => context.parent.$router.push('home');
+    return {
+      landing,
+      handleRoute
     }
   }
 };
@@ -86,10 +89,10 @@ export default {
       rgba(175, 175, 201, 0.42),
       rgba(175, 175, 201, 0.42)
     ),
-    url(https://ws1.sinaimg.cn/large/88b26e1cgy1fx7bqbh1y7j22b432wx6s.jpg);
+    url(https://i.loli.net/2019/08/19/U5mlAufkHPMxcZQ.jpg);
   background-position: 0% 0%, center;
   background-repeat: repeat, no-repeat;
-  background-size: auto, cover;
+  background-size: auto, cover  ;
   background-attachment: scroll;
   background-color: #ffffff;
 }
@@ -135,7 +138,8 @@ export default {
   flex-grow: 0;
   flex-shrink: 0;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.859);
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 -2px 4px 0 rgba(0,0,0,.2);
   border-radius: 0.5rem;
   transition: opacity 1s ease 0s, transform 1s ease 0s;
 }

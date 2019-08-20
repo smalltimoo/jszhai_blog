@@ -107,33 +107,40 @@ table {
     padding: 0.6em 1em;
   }
 }
+
 .content {
   h2:nth-child(2) {
     display: none;
   }
 }
+
 .content {
   img {
     width: 100%;
   }
+
   .auto_img {
     width: auto;
     display: flex;
   }
 }
+
 .content h2 {
   cursor: pointer;
 }
+
 .content h2:hover {
   color: #42b983;
 }
 
 .post-content {
   font-size: 1rem;
+
   .header-anchor {
     opacity: 0;
     color: #fff;
   }
+
   h1,
   h2,
   h3,
@@ -149,10 +156,12 @@ table {
       color: #fff;
     }
   }
+
   h2,
   h3 {
     margin-top: 3rem;
   }
+
   h3 {
     display: block;
     margin-top: 28px;
@@ -167,26 +176,32 @@ table {
     line-height: 32px;
     border-left: 5px solid rgb(255, 200, 31);
   }
+
   h4 {
     font-size: 1rem;
   }
+
   h4::before {
     content: '\25B2';
     color: #f45130;
   }
+
   p {
     font-size: 1rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
     text-align: left;
     line-height: 1.65;
+
     img {
       width: 100%;
     }
+
     code {
       padding-left: 4px;
       padding-right: 4px;
     }
+
     .auto_img {
       width: auto;
       display: flex;
@@ -196,6 +211,7 @@ table {
   ul {
     margin: 1rem 0px 1rem 1rem;
     text-align: left;
+
     li {
       line-height: 1.65;
     }
@@ -204,23 +220,28 @@ table {
   ol {
     text-align: left;
     margin: 1rem 0px 1rem 1rem;
+
     li {
       line-height: 1.65;
     }
   }
 }
+
 @media screen and (max-width: 1000px) and (min-width: 300px) {
   body {
     font-size: 10px;
   }
+
   .hljs {
     border-radius: 0px;
   }
+
   .post-content {
     .header-anchor {
       opacity: 0;
       color: #fff;
     }
+
     h1,
     h2,
     h3,
@@ -236,21 +257,27 @@ table {
         color: #fff;
       }
     }
+
     h1 {
       font-size: 1.4rem;
     }
+
     h2 {
       font-size: 1.3rem;
     }
+
     h3 {
       font-size: 1.2rem;
     }
+
     h4 {
       font-size: 1.1rem;
     }
+
     p {
       text-align: left;
       line-height: 1.65;
+
       img {
         width: 100%;
       }
@@ -258,6 +285,7 @@ table {
 
     ul {
       text-align: left;
+
       li {
         line-height: 1.65;
       }
@@ -265,15 +293,18 @@ table {
 
     ol {
       text-align: left;
+
       li {
         line-height: 1.65;
       }
     }
+
     blockquote::before {
       content: '\201C';
       color: #ed87bd5e;
       font-size: 2rem;
     }
+
     blockquote {
       display: flex;
       padding: 1%;
@@ -288,10 +319,11 @@ table {
       border-left: 5px solid #ed87bd5e;
       border-right: 5px solid #ed87bd5e;
       text-align: left;
-      quotes: ' ' ' ';
+      quotes: ' '' ';
     }
   }
 }
+
 /*过渡效果*/
 .fade-enter-active,
 .fade-leave-active {
@@ -299,8 +331,10 @@ table {
 }
 
 .fade-enter,
-.fade-leave-to /* .fade-leave-active below version 2.1.8 */
- {
+.fade-leave-to
+
+/* .fade-leave-active below version 2.1.8 */
+  {
   opacity: 0;
 }
 
