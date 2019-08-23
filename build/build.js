@@ -45,15 +45,15 @@ async function autoUpdate() {
   await shell.exec(`git remote add origin '${config.distOriginSSh}'`)
   await shell.exec('git add .')
   let code = await shell.exec(`git commit -m '${config.commitMessage}'`).code
-  if (code !== 0) {
-    await shell.echo('Error: Git commit failed');
-    await shell.exit(code);
-  } else {
+  // if (code !== 0) {
+  //   await shell.echo('Error: Git commit failed');
+  //   await shell.exit(code);
+  // } else {
     await shell.exec('git push origin master -f');
     console.log(chalk.green(
       `dist-> succeed`
     ))
-  }
+  // }
 }
 rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
   if (err) throw err

@@ -1,9 +1,12 @@
 <template>
   <div class="resume_container">
+    <div class="panfish" >
+      <img :src="require(`../assets/panda/panda${step}.png`)" />>
+    </div>
     <div class="section">
       <h3 class="section_header">Profile</h3>
       <h3 class="section_subheader">
-        I 'm a <strong>{{userInfo.jobTitle}}</strong> from {{userInfo.location}}. I aim to xxx xxxx xxxx....
+        I 'm a <strong>{{userInfo.jobTitle}}</strong> from {{userInfo.location}}. I am to xxx xxxx xxxx....
       </h3>
       <p> {{userInfo.description}}
       </p>
@@ -34,24 +37,28 @@
 </template>
 
 <script>
+import {value, onMounted, computed} from 'vue-function-api';
 const config = require("../../config/");
+
 export default {
-  name: "Resume",
-  data() {
+  props: {
+    name: 'Resume'
+  },
+  setup(props, context) {
+    const selectedTag = value('Git');
+    const select = (tsg) => {};
+    let step = value(1);
+    const userInfo = computed(() => config.userInfo);
+    onMounted(() => {});
     return {
-      selectedTag: "Git"
+      selectedTag,
+      select,
+      userInfo,
+      step
     };
   },
   components: {
     ProgressBarList: () => import("../components/ProgressBarList")
-  },
-  methods: {
-    select: function(tag) {}
-  },
-  computed: {
-    userInfo: function() {
-      return config.userInfo;
-    }
   }
 };
 </script>
@@ -68,10 +75,19 @@ export default {
   line-height: 2.2;
   border: 10px solid #fff;
   padding: 5%;
-  margin-top: 5rem;
+  position: relative;
+  margin-top: 10rem;
   border-radius: 0.5rem;
   margin-left: auto;
   margin-right: auto;
+}
+.panfish img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 12rem;
+  transform: translate(-50%,-83%);
+  z-index: 1;
 }
 .section {
   margin: 0 0 70px;

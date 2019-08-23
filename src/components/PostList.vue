@@ -88,13 +88,13 @@
 </template>
 
 <script>
-import { postData } from "../utils/data.js";
+import { postData } from "../utils/data.ts";
 import moment from "moment";
 import {
   getAllTags,
   getAllPostsByCategories,
   getAllPostsByTag
-} from "../utils/datafilter.js";
+} from "../utils/datafilter.ts";
 export default {
   // 主页
   name: "PostList",

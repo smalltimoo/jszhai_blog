@@ -50,7 +50,7 @@ module.exports = {
       ? `${process.argv[2]}:[${moment().format(
           'dddd, MMMM Do YYYY, h:mm:ss a'
         )}]`
-      : `AutoUpdate:[${moment().format('dddd, MMMM Do YYYY, h:mm:ss a')}]`,
+      : `AutoUpdate:aaaaaaaaa`,
   distOriginSSh: 'git@github.com:smalltimoo/smalltimoo.github.io.git',
   deleteRemote: 'git remote rm origin',
   initLocal: 'git init',

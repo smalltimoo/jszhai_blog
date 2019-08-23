@@ -30,7 +30,7 @@
 </template>
 <script>
 import "highlight.js/styles/atom-one-dark.css";
-import { postData } from "../utils/data.js";
+import { postData } from "../utils/data.ts";
 import moment from "moment";
 const config = require('../../config/');
 export default {

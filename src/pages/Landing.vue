@@ -1,5 +1,17 @@
 <template>
   <div class="landing_container">
+    <div class="wrapper">
+      <div class="hummingbird js-3dbox">
+        <div class="body">
+          <div class="back"></div>
+          <div class="wings"></div>
+          <div class="head">
+            <div class="nape"></div>
+            <div class="beak"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="landing_outter">
       <div class="landing_main">
         <div class="landing_inner">
@@ -11,7 +23,7 @@
             class="tracking-in-expand"
             @click="handleRoute()"
           >
-            <div class="arrow arrow_left"></div>{{landing.blogName}}<div class="arrow arrow_right"></div>
+            <div class="arrow arrow_left"></div><span class="animated flipInY bounce fast">{{landing.blogName}}</span><div class="arrow arrow_right"></div>
           </h1>
           <div
             class="info_tags tracking-in-contract-bck"
@@ -54,19 +66,23 @@
 
 <script>
 /* eslint-disable */
-const config = require("../../config/");
 import  { value, computed, onMounted }  from 'vue-function-api';
+const config = require("../../config/");
+
 export default {
   props: {
    name: "Landing"
   },
-  setup( props, context ){
-    console.info(props,context);
+  setup(props, context){
     const landing = computed(() => config.ladingInfo);
+    const video = value(0);
+    const videolist = value(new Array(3));
     const handleRoute = () => context.parent.$router.push('home');
     return {
       landing,
-      handleRoute
+      handleRoute,
+      video,
+      videolist
     }
   }
 };
@@ -96,6 +112,16 @@ export default {
   background-attachment: scroll;
   background-color: #ffffff;
 }
+/* .bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  transform: scale(1);
+} */
 .inner_img:hover {
   transition: all 0.5s ease-in-out;
   animation: flip-2-hor-top-bck 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955)
@@ -458,5 +484,278 @@ export default {
     -webkit-transform: rotate(2deg);
     transform: rotate(2deg);
   }
+}
+
+</style>
+
+<style lang="scss" scoped>
+
+@import "../assets/fontface.scss";
+    // @import url("https://fonts.googleapis.com/css?family=Lora:700");
+
+$palette: #fe8a71;
+$palette: #fe4a49;
+$palette: #1da1f2;
+$palette: #53a9c5;
+
+*, *:after, *:before {
+  box-sizing: border-box;
+  // border: 1px dashed #FFF;
+  backface-visibility: visible;
+}
+
+.wrapper {
+  min-width: 100vw;
+  // min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // background: linear-gradient(-45deg, #111, #355);
+  font-family: Lora, serif;
+
+  overflow: hidden;
+}
+
+.hummingbird {
+  $color-solid: $palette;
+  $color-gradient: linear-gradient(to bottom, rgba(#77eeb4, 1), transparent);
+  $color-gradient-realism: linear-gradient(to bottom, rgba(#77eeb4, 0.8), rgba(#53a9c5, 0.8), transparent);
+  $color-inverted: linear-gradient(to left, rgba($color-solid, 1), transparent);
+
+  $beak-color: linear-gradient(to top, #d1c6da, transparent);
+
+  $wing-color: linear-gradient(to top, #d46f30, transparent);
+
+  margin-top: 50px;
+  width: 200px;
+  height: 200px;
+
+  perspective: 60rem;
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease-out;
+  transform-origin: center;
+
+  pointer-events: none;
+
+  @media (max-width: 768px) {
+    transform: scale(0.8);
+  }
+
+  .body {
+    // background-color: rgba(250, 250, 250, 0.1);
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+
+    animation: rotate 15s linear infinite;
+
+    @keyframes rotate {
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+
+    &:before, &:after {
+      content: '';
+
+      display: block;
+      width: 70px;
+      height: 100%;
+
+      position: absolute;
+      left: 50%;
+
+      transform-origin: top right;
+      background: $color-gradient-realism;
+    }
+
+    &:before {
+      transform: rotateZ(30deg) rotateY(30deg);
+
+      clip-path: polygon(0 0, 100% 10%, 100% 100%);
+    }
+
+    &:after {
+
+      transform: rotateZ(30deg) rotateY(-30deg);
+
+      clip-path: polygon(0 0, 100% 10%, 100% 100%);
+    }
+
+    .back {
+      width: 60px;
+      height: 100%;
+      position: absolute;
+      background: $color-gradient-realism;
+
+      transform-style: preserve-3d;
+
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform: rotateY(90deg) rotateX(-13deg) translateZ(55px) translateY(-45px);
+    }
+
+    .wings {
+      position: absolute;
+      left: 35%;
+      top: 40px;
+      height: 100%;
+      transform-style: preserve-3d;
+
+      &:before, &:after {
+        content: '';
+
+        display: block;
+        width: 70px;
+        height: 100%;
+
+        position: absolute;
+        left: 50%;
+        top: -25px;
+
+        transform-origin: top center;
+        background: $wing-color;
+      }
+
+      &:before {
+        // transform: rotateZ(160deg) rotateY(-20deg) translateZ(30px);
+
+        clip-path: polygon(100% 0, 100% 100%, 0 0);
+
+        animation: beating-left 2s ease-in-out infinite;
+
+        @keyframes beating-left {
+          0% { transform: rotateZ(-75deg) rotateY(-10deg) translateZ(30px) rotateX(0deg); }
+          50% { transform: rotateZ(-75deg) rotateY(-10deg) translateZ(30px) rotateX(180deg); }
+          100% { transform: rotateZ(-75deg) rotateY(-10deg) translateZ(30px) rotateX(0deg); }
+        }
+      }
+
+      &:after {
+        // transform: rotateZ(160deg) rotateY(20deg) translateZ(-30px);
+
+        clip-path: polygon(100% 0, 100% 100%, 0 0);
+
+        animation: beating-right 2s ease-in-out infinite;
+
+        @keyframes beating-right {
+          0% { transform: rotateZ(-75deg) rotateY(10deg) translateZ(-30px) rotateX(0deg); }
+          50% { transform: rotateZ(-75deg) rotateY(10deg) translateZ(-30px) rotateX(-180deg); }
+          100% { transform: rotateZ(-75deg) rotateY(10deg) translateZ(-30px) rotateX(0deg); }
+        }
+      }
+
+    }
+
+    .head {
+      &:before, &:after {
+        content: '';
+
+        display: block;
+        width: 50px;
+        height: 30%;
+
+        position: absolute;
+        left: 55%;
+        top: -45px;
+
+        transform-origin: top right;
+        background: $color-gradient;
+      }
+
+      &:before {
+        transform: rotateZ(0deg) rotateY(40deg);
+
+        clip-path: polygon(0 20%, 100% 0, 100% 100%);
+      }
+
+      &:after {
+
+        transform: rotateZ(0deg) rotateY(-40deg);
+
+        clip-path: polygon(0 20%, 100% 0, 100% 100%);
+      }
+
+      .nape {
+        &:after {
+          content: '';
+          display: block;
+
+          width: 50px;
+          height: 35px;
+
+          position: absolute;
+          top: 0%;
+
+          background: $color-gradient-realism;
+
+          transform-origin: bottom center;
+          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+
+          transform: rotateY(90deg) rotateX(-73deg) translateZ(-37px) translateY(-110px);
+
+        }
+      }
+
+      .beak {
+        &:before, &:after {
+          content: '';
+
+          display: block;
+          width: 10px;
+          height: 60%;
+
+          position: absolute;
+          left: 75%;
+          top: -45px;
+
+          transform-origin: top right;
+          background: $beak-color;
+        }
+
+        &:before {
+          transform: rotateZ(-105deg) rotateY(25deg);
+
+          clip-path: polygon(0 0, 100% 1%, 100% 100%);
+        }
+
+        &:after {
+
+          transform: rotateZ(-105deg) rotateY(-25deg);
+
+          clip-path: polygon(0 0, 100% 1%, 100% 100%);
+        }
+      }
+    }
+  }
+
+  .platform {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0px;
+    transform: rotateX(90deg) translateZ(-100px);
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 8px dashed $palette;
+    box-shadow: 0 0 50px 00px $palette;
+    font-weight: bold;
+  }
+}
+
+.title {
+  color: #FFF;
+  position: absolute;
+  font-family: serif;
+  font-size: 2.8rem;
+  bottom: 10%;
+  pointer-events: none;
+  // background-color: red;
+
+  // clip-path: polygon(0 0, 18% 0, 18% 75%, 25% 0, 100% 25%, 100% 100%, 0 75%);
 }
 </style>

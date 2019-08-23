@@ -75,8 +75,8 @@
 </template>
 
 <script>
-import { postData } from "../utils/data.js";
-import { getAllCategories } from "../utils/datafilter.js";
+import { postData } from "../utils/data.ts";
+import { getAllCategories } from "../utils/datafilter.ts";
 import { photoData } from "../utils/photoData";
 export default {
   // 主页

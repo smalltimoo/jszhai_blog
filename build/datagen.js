@@ -4,7 +4,7 @@ const rm = require('rimraf')
 const { genRoutesFile } = require('./routegen')
 const matter = require('gray-matter');
 // 先移除存放博客信息的data.js文件
-const FILE_DATE_PATH = path.resolve(__dirname, '../src/utils/data.js');
+const FILE_DATE_PATH = path.resolve(__dirname, '../src/utils/data.ts');
 const DEFAULT_SOURCE_DIR = path.resolve(__dirname, '../src/posts/');
 module.exports = async function getData() {
   rm(FILE_DATE_PATH, err => {
@@ -48,9 +48,9 @@ module.exports = async function getData() {
           }
         }
         genRoutesFile(routes).then(routesCode => {
-          rm(path.resolve(__dirname, '../src/router/page.js'), err => {
+          rm(path.resolve(__dirname, '../src/router/page.ts'), err => {
             if (err) throw err
-            fs.writeFile(path.resolve(__dirname, '../src/router/page.js'), routesCode, { 'flag': 'a' }, function (err) {
+            fs.writeFile(path.resolve(__dirname, '../src/router/page.ts'), routesCode, { 'flag': 'a' }, function (err) {
               if (err) {
                 return console.error(err);
               }
@@ -58,8 +58,8 @@ module.exports = async function getData() {
           })
         });
         let postsStr = `export let postData = '${JSON.stringify(posts)}';`
-        // 将数组对象存入data.js
-        fs.writeFile(path.resolve(__dirname, '../src/utils/data.js'), postsStr, { 'flag': 'a' }, function (err) {
+        // 将数组对象存入data.ts
+        fs.writeFile(path.resolve(__dirname, '../src/utils/data.ts'), postsStr, { 'flag': 'a' }, function (err) {
           if (err) {
             return console.error(err);
           }

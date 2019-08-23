@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import { postData } from "../utils/data.js";
-import { getAllTags } from "../utils/datafilter.js";
+import { postData } from "../utils/data.ts";
+import { getAllTags } from "../utils/datafilter.ts";
 export default {
   name: "Tags",
   data() {

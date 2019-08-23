@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import { postData } from "../utils/data.js";
-import { getAllCategories } from "../utils/datafilter.js";
+import { postData } from "../utils/data.ts";
+import { getAllCategories } from "../utils/datafilter.ts";
 export default {
   // 主页
   name: "Allpost",

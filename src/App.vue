@@ -32,13 +32,11 @@
     </div>
     <router-view class="router-view" />
     <a
-      href="www.dendionk.com"
+      href="www.smalltimoo.com"
       class="copy-right"
     >©Power by Smalltimoo. All rights reserved.</a>
     <div :class="showCommonFooter ? 'common-footer slide-top':'common-footer hidden'">
       <div class="footer-content">
-        <!-- <a href="www.dendoink.com">Smalltimoo</a>
-         -->
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="210"
@@ -111,8 +109,8 @@
             href="www.dendionk.com"
           >Link 1</a>
 
-          <span id="busuanzi_container_site_pv" class="child" style='display:none'>| 总访问量 <span id="busuanzi_value_site_pv"></span> 次 </span>
-          <span id="busuanzi_container_site_uv" class="child" style='display:none'>| 总访客数 <span id="busuanzi_value_site_uv"></span> 人 </span>
+          <span id="busuanzi_container_site_pv" class="child" style='display:none'>| 访问量 <span id="busuanzi_value_site_pv"></span> 次 </span>
+          <span id="busuanzi_container_site_uv" class="child" style='display:none'>| 访客数 <span id="busuanzi_value_site_uv"></span> 人 </span>
         </div>
       </div>
     </div>
@@ -120,54 +118,72 @@
 </template>
 
 <script scoped>
-import { postData } from "./utils/data.js";
-import { getAllCategories } from "./utils/datafilter.js";
-
+import { postData } from "./utils/data.ts";
+import { getAllCategories } from "./utils/datafilter.ts";
+import { value, computed, onMounted } from 'vue-function-api';
 require('./utils/love');
 export default {
-  name: "App",
-  data() {
-    return {
-      menuFixed: false,
-      // 默认不显示
-      showCommonFooter: true,
-      activeMenu: "home"
-    };
+  props: {
+    name: "App"
   },
-  methods: {
-    handleRouter: function(dir, categorie = "") {
-      this.activeMenu = dir;
+  setup(props, context) {
+    let menuFixed = value(false);
+    let showCommonFooter = value(true);
+    let activeMenu = value("home");
+    const handleRouter = (dir, categorie = '') => {
+      activeMenu = dir;
       let path;
       if (categorie) {
         path = `/${dir}?${dir}=${categorie}`;
       } else {
         path = `/${dir}`;
       }
-      this.$router.push(path);
-    },
-    menu: function() {
+      context.parent.$router.push(path);
+    };
+    const menu = () => {
       let scrollCount =
         document.body.scrollTop || document.documentElement.scrollTop;
       if (scrollCount > 130) {
-        this.menuFixed = true;
+        menuFixed = true;
       } else {
-        this.menuFixed = false;
+        menuFixed = false;
       }
-    }
-  },
-  computed: {
-    categories: function() {
-      return Array.from(new Set(getAllCategories(JSON.parse(postData))));
-    }
+    };
+    // 颜色变化函数
+    const changeColor = () => {
+      console.info(111);
+      // 产生rgb的值
+      const r = Math.floor(Math.random() * 255);
+      const g = Math.floor(Math.random() * 255);
+      const b = Math.floor(Math.random() * 255);
+      const rgb = r.toString(16) + g.toString(16) + b.toString(16);
+      // toString(radix) 把数字转化为radix（取值范围2~36）进制值表示的字符串
+      document.querySelector('#app').style.backgroundColor = "#" + rgb;
+      window.setTimeout(changeColor, 2000);
+      // setTimeout() 方法用于在指定的毫秒数后调用函数或计算表达式。
+    };
+    const categories = computed(() => Array.from(new Set(getAllCategories(JSON.parse(postData)))));
+    // watch($route, (to, from) => {
+    //   showCommonFooter = to.name === "Allpost" || to.name === "Home";
+    // });
+    onMounted(() => {
+      window.addEventListener("scroll", menu);
+      // window.addEventListener("load", changeColor);
+    });
+    return {
+      menuFixed,
+      showCommonFooter,
+      activeMenu,
+      handleRouter,
+      menu,
+      changeColor,
+      categories
+    };
   },
   watch: {
     $route(to, from) {
       this.showCommonFooter = to.name === "Allpost" || to.name === "Home";
     }
-  },
-
-  mounted() {
-    window.addEventListener("scroll", this.menu);
   }
 };
 </script>
