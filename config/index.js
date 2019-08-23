@@ -47,9 +47,7 @@ module.exports = {
   },
   commitMessage:
     process.argv.length === 3
-      ? `${process.argv[2]}:[${moment().format(
-          'dddd, MMMM Do YYYY, h:mm:ss a'
-        )}]`
+      ? `444444444444444`
       : `AutoUpdate:aaaaaaaaa`,
   distOriginSSh: 'git@github.com:smalltimoo/smalltimoo.github.io.git',
   deleteRemote: 'git remote rm origin',
