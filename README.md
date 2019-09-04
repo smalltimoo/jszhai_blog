@@ -160,13 +160,39 @@ yarn build
     <td>形式样式设计中</td>
     <td>2019-01-15</td>
   </tr>
+  <tr>
+    <td>权限设置，高级权限可以查看私密图片等</td>
+    <td>形式样式设计中</td>
+    <td>2019-08-26</td>
+  </tr>
 </table>
-
-有更多好的建议，欢迎 pr 或者 issue，这个博客生成系统还有许多的不足，会一直维护下去的。<br>
-
-大家可以在我的 [掘金账号](https://juejin.im/user/585a2f52128fe10069ba1b95)找到我，也欢迎邮件`dendise7en@gmail.com`与我沟通
-
-
-### 欢迎关注公众号 「前端恶霸」，扫码关注，好货等着你~
-
-![](https://user-gold-cdn.xitu.io/2019/3/20/169992ac3759e2d2?w=258&h=258&f=jpeg&s=27199)
+<!--
+https://i.loli.net/2019/08/26/ADUeyWXb8lHPYh1.jpg
+https://i.loli.net/2019/08/26/IWuGh5F2jBxl37Q.jpg
+https://i.loli.net/2019/08/26/PuZxbpAdsCVHLFg.jpg
+https://i.loli.net/2019/08/26/KcLPnIV1EpArJv8.jpg
+https://i.loli.net/2019/08/26/kV8aYh9Gy2PTsAg.jpg
+https://i.loli.net/2019/08/26/qcK98vW14iADCy5.jpg
+https://i.loli.net/2019/08/26/fEtRyr3aWLPzANZ.jpg
+https://i.loli.net/2019/08/26/8lJK2vhEkLOeQwD.jpg
+https://i.loli.net/2019/08/26/rBKeuCsDqgjhR6k.jpg
+https://i.loli.net/2019/08/26/7GU4VcEnhHLlrAq.jpg
+https://i.loli.net/2019/08/27/apzM26GrilWFweq.jpg
+https://i.loli.net/2019/08/27/xrE9cRSmYXihaz7.jpg
+https://i.loli.net/2019/08/27/Ydy852murHtTVLv.jpg
+https://i.loli.net/2019/08/27/w9oifgYkxBbzRMH.jpg
+https://i.loli.net/2019/08/27/1NRPWxYnSmQTO3V.jpg
+https://i.loli.net/2019/08/27/F4KUrlSCQBYcdX1.jpg
+https://i.loli.net/2019/08/27/5vguTOEHQcpeBUd.jpg
+https://i.loli.net/2019/08/27/CwUoPXMecLYhj9v.jpg
+https://i.loli.net/2019/08/27/zdSrnNupUEoKWhk.jpg
+https://i.loli.net/2019/08/27/p2OLtrY1h3mBJUM.jpg
+https://i.loli.net/2019/08/27/zJaKPb5C2LmNW4O.jpg
+https://i.loli.net/2019/08/27/iSuAoBdItMmZ8TW.jpg
+https://i.loli.net/2019/08/27/weAYUL6QISsgtdF.jpg
+https://i.loli.net/2019/08/27/fTtKCn36JOdrQGw.jpg
+https://i.loli.net/2019/08/27/yECBskXwYKiVx2h.jpg
+https://i.loli.net/2019/08/27/YW93zQslkf2KjTR.jpg
+https://i.loli.net/2019/08/27/iSERgA3Zuc5yCLb.jpg
+https://i.loli.net/2019/08/27/dfpwt4uqAvYKies.jpg
+https://i.loli.net/2019/08/27/wWPyAihdI1c4RxL.jpg -->

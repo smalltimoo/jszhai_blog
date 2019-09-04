@@ -168,6 +168,37 @@ export default {
     // });
     onMounted(() => {
       window.addEventListener("scroll", menu);
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === 'hidden') {
+          document.title = `你干啥坏事去了，咋不理我了呢...`;
+        } else {
+          document.title = `你又回来了，好开心...`;
+          window.setTimeout(() => {
+            document.title = `Smalltimoo Home `;
+          }, 2000);
+        }
+      });
+      let permission = Notification.permission;
+      if (permission === "granted") {
+        // 已同意，开始发送通知
+        const notice = new Notification("Smalltimoo Home", {
+          body: "欢迎你访问 Smalltimoo Home, 祝你玩得开心！🈶\n输入密令可以获得高级权限",
+          icon: require("./assets/avatar.png"),
+          data: {
+            url: "https://www.smalltimoo.com"
+          }
+        });
+
+        // 点击回调
+        notice.onclick = () => {
+          window.open(notice.data.url); // 当用户点击通知时，在浏览器打开百度网站
+        };
+      } else if (permission === "denied") {
+        // 不同意，发不了咯
+      } else {
+        // 其他状态，可以重新发送授权提示
+        Notification.requestPermission();
+      }
       // window.addEventListener("load", changeColor);
     });
     return {

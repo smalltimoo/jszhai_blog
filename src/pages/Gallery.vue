@@ -53,6 +53,7 @@
 <script>
 import moment from "moment";
 import { photoData } from "../utils/photoData";
+import {SYSTEM} from "../utils/system.ts";
 import { value, onMounted } from 'vue-function-api';
 /** 主页 */
 export default {
@@ -74,15 +75,17 @@ export default {
     });
     onMounted(() => {
       if (photoData) {
-        for (let x = 0; x < photoData.length; x += 3) {
-          if (photoData[x]) {
-            firstColumnPhotos.value.push(photoData[x]);
+        const power = sessionStorage.getItem('password') === SYSTEM.PASSWORD ? 1 : 0;
+        const photos = power ? photoData.filter(_ => _.type !== 'private') : photoData;
+        for (let x = 0; x < photos.length; x += 3) {
+          if (photos[x]) {
+            firstColumnPhotos.value.push(photos[x]);
           }
-          if (photoData[x + 1]) {
-            secondColumnPhotos.value.push(photoData[x + 1]);
+          if (photos[x + 1]) {
+            secondColumnPhotos.value.push(photos[x + 1]);
           }
-          if (photoData[x + 2]) {
-            thirdColumnPhotos.value.push(photoData[x + 2]);
+          if (photos[x + 2]) {
+            thirdColumnPhotos.value.push(photos[x + 2]);
           }
         }
       }

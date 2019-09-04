@@ -25,7 +25,7 @@
           >
             <div class="arrow arrow_left"></div><span class="animated flipInY bounce fast">{{landing.blogName}}</span><div class="arrow arrow_right"></div>
           </h1>
-          <div
+          <div v-show="!isShowpassword"
             class="info_tags tracking-in-contract-bck"
             @click="handleRoute()"
           >
@@ -35,27 +35,9 @@
             &
             <p class="info_tag">{{landing.tagC}}</p>
           </div>
-          <div class="info_icon_group">
-            <a :href="landing.github">
-              <awesome-icon
-                name="brands/github"
-                scale='4'
-              ></awesome-icon>
-            </a>
-            <a :href="landing.twitter">
-              <awesome-icon
-                name="brands/twitter"
-                scale='3'
-              ></awesome-icon>
-            </a>
-            <a :href="landing.email">
-              <awesome-icon
-                name="envelope"
-                scale='2'
-              ></awesome-icon>
-            </a>
-            <a :href="landing.linkedIn">
-              <awesome-icon name="brands/linkedin"></awesome-icon>
+          <div v-show="isShowpassword" class="info_tags tracking-in-contract-bck" contenteditable>1234rtyu</div>
+          <div class="info_icon_group" >
+            <a v-for="(item, index) in contactList" :key="index" @mouseover="hoverClass = item.name" @mouseout="hoverClass = ''" :href="item.href"><img v-show="hoverClass === item.name" :src="item.imgurl_hover" width="45px"/><img v-show="hoverClass !== item.name" :src="item.imgurl" width="45px"/>
             </a>
           </div>
         </div>
@@ -65,25 +47,58 @@
 </template>
 
 <script>
-/* eslint-disable */
-import  { value, computed, onMounted }  from 'vue-function-api';
+import { value, computed, onMounted, onUnmounted } from 'vue-function-api';
 const config = require("../../config/");
 
 export default {
   props: {
-   name: "Landing"
+    name: "Landing"
   },
-  setup(props, context){
+  setup (props, context) {
     const landing = computed(() => config.ladingInfo);
     const video = value(0);
     const videolist = value(new Array(3));
+    const hoverClass = value('');
+    let inter;
+    let isShowpassword = value(false);
+    const contactList = value([
+      {
+        name: 'github',
+        href: landing.github,
+        imgurl: require('../assets/landing/github.png'),
+        imgurl_hover: require('../assets/landing/github_hover.png')
+      },
+      {
+        name: 'email',
+        href: landing.email,
+        imgurl: require('../assets/landing/email.png'),
+        imgurl_hover: require('../assets/landing/email_hover.png')
+      },
+      {
+        name: 'nuggets',
+        href: landing.nuggets,
+        imgurl: require('../assets/landing/nuggets.png'),
+        imgurl_hover: require('../assets/landing/nuggets_hover.png')
+      }
+    ]);
     const handleRoute = () => context.parent.$router.push('home');
+    onMounted(() => {
+      inter = window.setInterval(() => {
+        isShowpassword = !isShowpassword;
+      }, 2000);
+    });
+    onUnmounted(() => {
+      clearInterval(inter);
+    });
     return {
       landing,
       handleRoute,
       video,
-      videolist
-    }
+      videolist,
+      contactList,
+      hoverClass,
+      isShowpassword
+    };
   }
 };
 </script>
@@ -225,6 +240,7 @@ export default {
   display: flex;
   justify-content: space-around;
   cursor: pointer;
+  padding-top:10px;
   align-items: flex-end;
 }
 .landing_inner .info_icon_group a {

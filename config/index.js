@@ -40,15 +40,17 @@ module.exports = {
     tagA: 'Dreamer',
     tagB: 'Coder',
     tagC: 'Writter',
-    github: '',
+    github: 'smalltimoo.github.io',
     twitter: '',
-    email: '',
-    linkedIn: ''
+    email: 'smalltimoo@163.com',
+    nuggets: '185558'
   },
   commitMessage:
     process.argv.length === 3
-      ? `444444444444444`
-      : `AutoUpdate:aaaaaaaaa`,
+      ? `${process.argv[2]}:${moment().format(
+          'dddd, MMMM Do YYYY, h:mm:ss a'
+        )}`
+      : `AutoUpdate:${moment().format('dddd, MMMM Do YYYY, h:mm:ss a')}`,
   distOriginSSh: 'git@github.com:smalltimoo/smalltimoo.github.io.git',
   deleteRemote: 'git remote rm origin',
   initLocal: 'git init',
